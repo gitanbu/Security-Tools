@@ -33,3 +33,23 @@ Total: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 4, CRITICAL: 0)
 | sqlite  | CVE-2019-8457    |          | 3.26.0-r3         | 3.28.0-r0     | sqlite: heap out-of-bound read |
 |         |                  |          |                   |               | in function rtreenode()        |
 +---------+------------------+----------+-------------------+---------------+--------------------------------+
+
+
+Skip update of vulnerability DB
+
+Trivy always updates its vulnerability database when it starts operating. This is usually fast, as it is a difference update. But if you want to skip even that, use the --skip-update option.
+
+$ trivy --skip-update python:3.4-alpine3.9
+
+
+Client
+Then, specify the remote address.
+
+$ trivy client --remote http://localhost:8080 alpine:3.10
+
+Authentication
+$ trivy server --listen localhost:8080 --token dummy
+$ trivy client --remote http://localhost:8080 --token dummy alpine:3.10
+
+
+
