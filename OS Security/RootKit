@@ -1,0 +1,33 @@
+Scan for Rootkits, backdoors and Exploits Using ‘Rootkit Hunter’ in Linux
+
+yum install -y epel-release
+
+yum install rkhunter
+
+rkhunter --update
+
+rkhunter --propupd
+
+
+
+rkhunter --check --sk
+
+# cat /var/log/rkhunter/rkhunter.log | grep -i warning
+[14:03:56] Info: No mail-on-warning address configured
+[14:05:58]   Checking for passwordless accounts              [ Warning ]
+[14:05:58] Warning: Found passwordless account in shadow file: csvn
+[14:05:58]   Checking for passwd file changes                [ Warning ]
+[14:05:58] Warning: Unable to check for passwd file differences: no copy of the passwd file exists.
+[14:05:58]   Checking for group file changes                 [ Warning ]
+[14:05:58] Warning: Unable to check for group file differences: no copy of the group file exists.
+[root@svn ~]# clamscan --infected --remove --recursive ./
+
+----------- SCAN SUMMARY -----------
+Known viruses: 7096941
+Engine version: 0.102.3
+Scanned directories: 16
+Scanned files: 14
+Infected files: 0
+Data scanned: 7.78 MB
+Data read: 4.21 MB (ratio 1.85:1)
+Time: 18.625 sec (0 m 18 s)
